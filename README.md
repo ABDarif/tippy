@@ -23,7 +23,7 @@ Here's a walkthrough of the app:
 
 <img src='https://im4.ezgif.com/tmp/ezgif-4-7c87608aa2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [ezgif](https://ezgif.com/).
 
 ## Notes
 
