@@ -1,5 +1,6 @@
 package ac.bracu.abdullaharif.tippy
 
+import android.animation.ArgbEvaluator
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 
 private const val INITIAL_TIP_PERCENT = 15
 
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvTipPercentLabel: TextView
     private lateinit var etTipAmount: TextView
     private lateinit var etTotalAmount: TextView
+    private lateinit var tvTipDescription: TextView
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,14 +30,17 @@ class MainActivity : AppCompatActivity() {
         tvTipPercentLabel = findViewById(R.id.tvTipPercentLabel)
         etTipAmount = findViewById(R.id.etTipAmount)
         etTotalAmount = findViewById(R.id.etTotalAmount)
+        tvTipDescription = findViewById(R.id.tvTipDescription)
 
         SeekBarTip.progress = INITIAL_TIP_PERCENT
         tvTipPercentLabel.text = "$INITIAL_TIP_PERCENT%"
+        updateTipDescription(INITIAL_TIP_PERCENT)
 
         SeekBarTip.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 tvTipPercentLabel.text = "$progress%"
+                updateTipDescription(progress)
                 printTipAndTotal()
             }
 
@@ -53,6 +59,23 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun updateTipDescription(tipPercent: Int) {
+        val tipDescription = when (tipPercent) {
+            in 0..9 -> "Poor"
+            in 10..14 -> "Acceptable"
+            in 15..19 -> "Good"
+            in 20..24 -> "Great"
+            else -> "Amazing"
+        }
+        tvTipDescription.text = tipDescription
+
+        val color = ArgbEvaluator().evaluate(
+            tipPercent.toFloat()/SeekBarTip.max,
+            ContextCompat.getColor(this, R.color.worst),
+            ContextCompat.getColor(this, R.color.best)) as Int
+        tvTipDescription.setTextColor(color)
     }
 
     @SuppressLint("SetTextI18n")
