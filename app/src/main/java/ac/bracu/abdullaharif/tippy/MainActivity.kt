@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import kotlin.math.ceil
 
 private const val INITIAL_TIP_PERCENT = 0
 
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etTotalAmount: TextView
     private lateinit var tvTipDescription: TextView
     private lateinit var etPersonNum: TextView
+    private lateinit var etTotalPerPerson: TextView
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         etTotalAmount = findViewById(R.id.etTotalAmount)
         tvTipDescription = findViewById(R.id.tvTipDescription)
         etPersonNum = findViewById(R.id.etPersonNum)
+        etTotalPerPerson = findViewById(R.id.etTotalPerPerson)
 
         SeekBarTip.progress = INITIAL_TIP_PERCENT
         tvTipPercentLabel.text = "$INITIAL_TIP_PERCENT%"
@@ -105,11 +108,13 @@ class MainActivity : AppCompatActivity() {
         // 1. Get the values of Base & Tip Percent
         val baseAmount = etBaseAmount.text.toString().toDouble()
         val tipPercent = SeekBarTip.progress
-        // 2. Calculate Tip & Total
+        // 2. Calculate Tip, Total & Per Person total
         val tipAmount = baseAmount * tipPercent / 100
-        val totalAmount = (baseAmount + tipAmount) / etPersonNum.text.toString().toInt()
+        val totalAmount = ceil(baseAmount + tipAmount)
+        val perPersonTotal = totalAmount / etPersonNum.text.toString().toInt()
         // 3. Update Tip & Total in the UI
         etTipAmount.text = "%.2f".format(tipAmount)
-        etTotalAmount.text = "%.2f".format(totalAmount)
+        etTotalAmount.text = totalAmount.toInt().toString()
+        etTotalPerPerson.text = perPersonTotal.toString()
     }
 }
