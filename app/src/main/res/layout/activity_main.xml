@@ -12,8 +12,8 @@
         android:id="@+id/tvBaseLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
         android:text="Base"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/tvBaseLabel"
-        app:layout_constraintTop_toBottomOf="@+id/tvBaseLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvPeopleNum"
         tools:text="24%" />
 
     <TextView
@@ -107,4 +107,26 @@
         app:layout_constraintStart_toStartOf="@+id/SeekBarTip"
         app:layout_constraintTop_toBottomOf="@+id/SeekBarTip"
         tools:text="Amazing" />
+
+    <TextView
+        android:id="@+id/tvPeopleNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Person"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/tvBaseLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvBaseLabel" />
+
+    <EditText
+        android:id="@+id/etPersonNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="8"
+        android:hint="Total Guests"
+        android:inputType="numberDecimal"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPeopleNum"
+        app:layout_constraintStart_toStartOf="@+id/etBaseAmount"
+        app:layout_constraintTop_toTopOf="@+id/tvPeopleNum" />
 </androidx.constraintlayout.widget.ConstraintLayout>
