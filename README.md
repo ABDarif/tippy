@@ -21,9 +21,9 @@ The following functionalities are implemented:
 
 Here's a walkthrough of the app:
 
-<img src='https://im4.ezgif.com/tmp/ezgif-4-7c87608aa2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjJ1Z3d4enF1cWE2dnVoejBqOGw2ZXp5dGt6NzJlczkycHMyaW4yNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/0Bgyh0I0YZXlBpR6dw/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [ezgif](https://ezgif.com/).
+GIF created with [giphy](https://giphy.com/).
 
 ## Notes
 
